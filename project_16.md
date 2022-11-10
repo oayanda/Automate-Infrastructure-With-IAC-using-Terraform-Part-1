@@ -51,3 +51,52 @@ aws s3 ls
 
 ![Amazon S3 bucket](/images/3.png)
 
+## VPC | Subnets | Security Groups
+
+Install Terraform on Windows
+
+```bash
+choco install terraform
+
+# Verify installation
+terraform -help
+```
+
+Let us create a directory structure
+Open your Visual Studio Code and:
+
+Create a folder called PBL
+Create a file in the folder, name it main.tf
+
+![Amazon S3 bucket](/images/4.png)
+
+Add `AWS` as a `provider` code block, and a `resource` code block to create a VPC in the `main.tf` file.
+
+> `Provider` block informs Terraform that we intend to build infrastructure within AWS and
+Resource block will create a VPC.
+
+```bash
+provider "aws" {
+  region = "eu-west-2"
+}
+
+# Create VPC
+resource "aws_vpc" "main" {
+  cidr_block                     = "172.16.0.0/16"
+  enable_dns_support             = "true"
+  enable_dns_hostnames           = "true"
+  enable_classiclink             = "false"
+  enable_classiclink_dns_support = "false"
+}
+```
+
+The next thing we need to do, is to download necessary plugins for Terraform to work. These plugins are used by providers and provisioners. At this stage, we only have `provider` in our `main.tf`file. So, Terraform will just download plugin for AWS provider.
+Navigate to the PBL folder 
+
+```bash
+> cd PBL
+
+> terraform init
+```
+
+![Amazon S3 bucket](/images/5.png)
