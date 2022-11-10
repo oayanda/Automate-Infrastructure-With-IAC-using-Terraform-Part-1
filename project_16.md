@@ -30,3 +30,24 @@ Install Boto3 (Boto3 is a AWS SDK for Python)
 ```bash
 pip install boto3
 ```
+
+Terraform must store state about your managed infrastructure and configuration. This state is used by Terraform to map real world resources to your configuration, keep track of metadata, and to improve performance for large infrastructures.
+
+This state is stored by default in a local file named "terraform.tfstate", but it can also be stored remotely, which works better in a team environment.
+
+Create a S3 bucket resource to store terraform state remotely. 
+Type `S3` in search bar in aws management console
+Click on create bucket
+![Amazon S3 bucket](/images/1.png)
+
+Enter a Bucket name, AWS Region, Enable Bucket Versioning, Add a Tag and click create bucket.
+![Amazon S3 bucket](/images/2.png)
+
+You can also verfiy this in the AWS CLI
+
+```bash
+aws s3 ls
+```
+
+![Amazon S3 bucket](/images/3.png)
+
